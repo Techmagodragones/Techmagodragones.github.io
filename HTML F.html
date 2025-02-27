@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login y Registro</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f3f3f3;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 300px;
+            text-align: center;
+        }
+        input, button {
+            width: 100%;
+            margin: 10px 0;
+            padding: 10px;
+        }
+        .link {
+            color: blue;
+            cursor: pointer;
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="container" id="authContainer">
+        <h2 id="formTitle">Iniciar Sesión</h2>
+        <form id="authForm">
+            <input type="email" id="email" placeholder="Correo Electrónico" required>
+            <input type="password" id="password" placeholder="Contraseña" required>
+            <button type="submit">Iniciar Sesión</button>
+        </form>
+        <p id="toggleText">¿No tienes cuenta? <span class="link" onclick="toggleForm()">Regístrate aquí</span></p>
+    </div>
+
+    <script>
+        function toggleForm() {
+            const formTitle = document.getElementById("formTitle");
+            const authForm = document.getElementById("authForm");
+            const toggleText = document.getElementById("toggleText");
+
+            if (formTitle.textContent === "Iniciar Sesión") {
+                formTitle.textContent = "Registrarse";
+                authForm.innerHTML = `
+                    <input type="text" id="name" placeholder="Nombre" required>
+                    <input type="email" id="email" placeholder="Correo Electrónico" required>
+                    <input type="password" id="password" placeholder="Contraseña" required>
+                    <button type="submit">Registrarse</button>
+                `;
+                toggleText.innerHTML = "¿Ya tienes cuenta? <span class='link' onclick='toggleForm()'>Inicia sesión aquí</span>";
+            } else {
+                formTitle.textContent = "Iniciar Sesión";
+                authForm.innerHTML = `
+                    <input type="email" id="email" placeholder="Correo Electrónico" required>
+                    <input type="password" id="password" placeholder="Contraseña" required>
+                    <button type="submit">Iniciar Sesión</button>
+                `;
+                toggleText.innerHTML = "¿No tienes cuenta? <span class='link' onclick='toggleForm()'>Regístrate aquí</span>";
+            }
+        }
+    </script>
+</body>
+</html>
